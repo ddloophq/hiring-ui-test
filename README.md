@@ -8,7 +8,7 @@ The backend (Next.js Pages Router, Prisma/SQLite, tRPC, Inngest) is already wire
 
 ## How this works
 
-- **Timebox:** aim for about **2–4 hours**. Stop when you’d stop on a real ticket — depth beats coverage.
+- **Timebox:** aim for **90–120 minutes**. Stop when you’d stop on a real ticket — depth beats coverage.
 - **Deliverable:** a branch or PR with your changes, plus a short note (PR description or `NOTES.md`) on what you did and why.
 - We’ll walk through the work together afterward; be ready to explain decisions.
 
