@@ -1,0 +1,66 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider = "prisma-client"
+    output   = "../generated/prisma"
+}
+
+datasource db {
+    provider = "sqlite"
+}
+
+model Project {
+    id        String   @id @default(cuid())
+    name      String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    companies ProjectCompany[]
+}
+
+model ProjectCompany {
+    id             String   @id @default(cuid())
+    projectId      String
+    companyNumber  String
+    name           String
+    companyType    String
+    registeredIn   String
+    registeredAt   DateTime
+    status         String
+    createdAt      DateTime @default(now())
+    updatedAt      DateTime @updatedAt
+
+    project  Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+    extracts CompanyExtract[]
+
+    @@unique([projectId, companyNumber])
+    @@index([projectId])
+}
+
+enum ExtractStatus {
+    PENDING
+    READY
+}
+
+model CompanyExtract {
+    id               String        @id @default(cuid())
+    projectCompanyId String
+    version          Int
+    status           ExtractStatus @default(PENDING)
+    orderedAt        DateTime      @default(now())
+    readyAt          DateTime?
+    /// Expected ready time, for display only. The Inngest job settles the extract.
+    settleAfter      DateTime
+    /// JSON: Shareholder[]
+    shareholders     String?
+    /// JSON: ShareClass[]
+    shareClasses     String?
+    createdAt        DateTime      @default(now())
+    updatedAt        DateTime      @updatedAt
+
+    projectCompany ProjectCompany @relation(fields: [projectCompanyId], references: [id], onDelete: Cascade)
+
+    @@unique([projectCompanyId, version])
+    @@index([projectCompanyId])
+}
