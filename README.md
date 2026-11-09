@@ -9,7 +9,8 @@ The backend (Next.js Pages Router, Prisma/SQLite, tRPC, Inngest) is already wire
 ## How this works
 
 - **Timebox:** aim for **90–120 minutes**. Stop when you’d stop on a real ticket — depth beats coverage.
-- **Deliverable:** a branch or PR with your changes, plus a short note (PR description or `NOTES.md`) on what you did and why.
+- **Getting started:** click **Use this template → Create a new repository** on GitHub and set the new repository to **Private**. Please don't fork this repository or open a pull request against it.
+- **Deliverable:** your changes in your private repository, plus a short note (`NOTES.md`) on what you did and why. When you're done, invite the reviewer as a collaborator (**Settings → Collaborators → Add people**).
 - We’ll walk through the work together afterward; be ready to explain decisions.
 
 ---
